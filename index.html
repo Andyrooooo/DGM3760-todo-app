@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Hello</h1>
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Document</title>
+ </head>
+ <body>
+  <h1>My todo App</h1>
 
-    <h2>Hi</h2>
-  </body>
+  <form id="newTodoForm">
+   <label>Description</label>
+   <input class="todoInputName" type="text" />
+
+   <label for="category">Category</label>
+   <select id="todoSelectCategory">
+    <option value=""></option>
+    <option value="Fitness">Fitness</option>
+    <option value="Daily Goal">Daily Goal</option>
+    <option value="Home Improvement">Home Improvement</option>
+    <option value="chores">Chores</option>
+    <option value="work">Work</option>
+    <option value="school">School</option>
+    <option value="finances">Finances</option>
+   </select>
+
+   <label>Due Date</label>
+   <input class="inputDueDate" type="date" />
+
+   <input type="submit" class="addBTN" value="Add Todo"></input>
+  </form>
+
+  <form>
+   <label>Add a new category</label>
+   <input type="text" />
+
+   <button>Add Category</button>
+  </form>
+
+  <ul class="displayTodos"></ul>
+ </body>
+
+ <script src="main.js"></script>
 </html>
