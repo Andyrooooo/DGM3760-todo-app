@@ -16,13 +16,13 @@
    <label for="category">Category</label>
    <select id="todoSelectCategory">
     <option value=""></option>
-    <option value="Fitness">Fitness</option>
+    <!-- <option value="Fitness">Fitness</option>
     <option value="Daily Goal">Daily Goal</option>
     <option value="Home Improvement">Home Improvement</option>
     <option value="chores">Chores</option>
     <option value="work">Work</option>
     <option value="school">School</option>
-    <option value="finances">Finances</option>
+    <option value="finances">Finances</option> -->
    </select>
 
    <label>Due Date</label>
@@ -31,11 +31,11 @@
    <input type="submit" class="addBTN" value="Add Todo"></input>
   </form>
 
-  <form>
+  <form id="newCategoryForm">
    <label>Add a new category</label>
-   <input type="text" />
+   <input type="text" class="newCategoryInput" />
 
-   <button>Add Category</button>
+   <input type="submit" class="addCategory" value="Add Category"></input>
   </form>
 
   <ul class="displayTodos"></ul>

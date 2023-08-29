@@ -1,58 +1,39 @@
-let todos = [
- {
-  todoName: "Go on a hike",
-  todoComplete: false,
-  todoCategory: "fitness",
-  todoDueDate: "2023-08-30",
-  todoID: 1,
- },
- {
-  todoName: "Wash dishes",
-  todoComplete: false,
-  todoCategory: "chores",
-  todoDueDate: "2023-08-28",
-  todoID: 2,
- },
- {
-  todoName: "Finish Lando's project",
-  todoComplete: false,
-  todoCategory: "school",
-  todoDueDate: "2023-09-02",
-  todoID: 3,
- },
-]
+let todos = []
 
 let displayTodos = document.querySelector(".displayTodos")
-
-// FOREACH TO DISPLAY OUR TODOS THAT EXIST----------------------------------------------
-todos.forEach((todo) => {
- let todoListItem = document.createElement("li")
- let todoInputBox = document.createElement("input")
- let todoCategoryBox = document.createElement("input")
- let todoDueDateBox = document.createElement("input")
- let todoCompleteBox = document.createElement("input")
-
- todoInputBox.value = todo.todoName
- todoCategoryBox.value = todo.todoCategory
- todoDueDateBox.value = todo.todoDueDate
- todoCompleteBox.value = todo.todoComplete
-
- todoInputBox.setAttribute("readonly", "true")
- todoCategoryBox.setAttribute("readonly", "true")
- todoDueDateBox.setAttribute("readonly", "true")
- todoCompleteBox.setAttribute("type", "checkbox")
-
- todoListItem.appendChild(todoInputBox)
- todoListItem.appendChild(todoCategoryBox)
- todoListItem.appendChild(todoDueDateBox)
- todoListItem.appendChild(todoCompleteBox)
- displayTodos.appendChild(todoListItem)
-})
-
+let todoSelectCategory = document.querySelector("#todoSelectCategory")
 let newTodoForm = document.querySelector("#newTodoForm")
 let todoInputName = document.querySelector(".todoInputName")
-let todoSelectCategory = document.querySelector("#todoSelectCategory")
 let inputDueDate = document.querySelector(".inputDueDate")
+
+// DISPLAY PRE-SELECTED OPTIONS FOR CATEGORY----------------------------------------------
+let fitnessOption = document.createElement("option")
+let choresOption = document.createElement("option")
+let homeworkOption = document.createElement("option")
+fitnessOption.innerText = "Fitness"
+choresOption.innerText = "Chores"
+homeworkOption.innerText = "Homework"
+
+todoSelectCategory.appendChild(fitnessOption)
+todoSelectCategory.appendChild(choresOption)
+todoSelectCategory.appendChild(homeworkOption)
+
+// console.log(todoSelectCategory)
+let newCategoryForm = document.querySelector("#newCategoryForm")
+let newCategoryInput = document.querySelector(".newCategoryInput")
+
+// ADD NEW CATEGORIES FUNCTION--------------------------------------------------------
+newCategoryForm.addEventListener("submit", (e) => {
+ e.preventDefault()
+
+ let createNewCategory = () => {
+  let newCategoryName = newCategoryInput.value
+  let newCategoryOption = document.createElement("option")
+  newCategoryOption.innerText = newCategoryName
+  todoSelectCategory.appendChild(newCategoryOption)
+ }
+ createNewCategory()
+})
 
 // EVENT LISTENER TO ADD NEW TODO TO THE ARRAY-------------------------------------------
 newTodoForm.addEventListener("submit", (e) => {
@@ -63,7 +44,12 @@ newTodoForm.addEventListener("submit", (e) => {
   const newTodoCategory = todoSelectCategory.value
   const newTodoDueDate = inputDueDate.value
   const newTodoComplete = false
-  const newTodoID = todos[todos.length - 1].todoID + 1
+
+  if (todos.length === 0) {
+   newTodoID = 1
+  } else {
+   newTodoID = todos[todos.length - 1].todoID + 1
+  }
 
   let todoListItem = document.createElement("li")
   let todoInputBox = document.createElement("input")
@@ -96,6 +82,7 @@ newTodoForm.addEventListener("submit", (e) => {
   }
 
   todos = [...todos, todo]
+  /* todos.push(todo) */
   todoInputName.value = ""
   todoSelectCategory.value = ""
   inputDueDate.value = ""
@@ -103,3 +90,52 @@ newTodoForm.addEventListener("submit", (e) => {
  createNewTodo()
  console.log(todos)
 })
+
+/* let todos = [
+ {
+  todoName: "Go on a hike",
+  todoComplete: false,
+  todoCategory: "fitness",
+  todoDueDate: "2023-08-30",
+  todoID: 1,
+ },
+ {
+  todoName: "Wash dishes",
+  todoComplete: false,
+  todoCategory: "chores",
+  todoDueDate: "2023-08-28",
+  todoID: 2,
+ },
+ {
+  todoName: "Finish Lando's project",
+  todoComplete: false,
+  todoCategory: "school",
+  todoDueDate: "2023-09-02",
+  todoID: 3,
+ },
+] */
+
+// FOREACH TO DISPLAY OUR TODOS THAT EXIST----------------------------------------------
+/* todos.forEach((todo) => {
+ let todoListItem = document.createElement("li")
+ let todoInputBox = document.createElement("input")
+ let todoCategoryBox = document.createElement("input")
+ let todoDueDateBox = document.createElement("input")
+ let todoCompleteBox = document.createElement("input")
+
+ todoInputBox.value = todo.todoName
+ todoCategoryBox.value = todo.todoCategory
+ todoDueDateBox.value = todo.todoDueDate
+ todoCompleteBox.value = todo.todoComplete
+
+ todoInputBox.setAttribute("readonly", "true")
+ todoCategoryBox.setAttribute("readonly", "true")
+ todoDueDateBox.setAttribute("readonly", "true")
+ todoCompleteBox.setAttribute("type", "checkbox")
+
+ todoListItem.appendChild(todoInputBox)
+ todoListItem.appendChild(todoCategoryBox)
+ todoListItem.appendChild(todoDueDateBox)
+ todoListItem.appendChild(todoCompleteBox)
+ displayTodos.appendChild(todoListItem)
+}) */
