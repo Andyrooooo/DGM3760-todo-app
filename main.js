@@ -93,9 +93,13 @@ newTodoForm.addEventListener("submit", (e) => {
   }
 
   let todoListItem = document.createElement("li")
+  todoListItem.classList.add("todoListItem")
   let todoInputBox = document.createElement("input")
+  todoInputBox.classList.add("todoInputBox")
   let todoInputCategory = document.createElement("input")
+  todoInputCategory.classList.add("todoInputCategory")
   let todoInputDueDate = document.createElement("input")
+  todoInputDueDate.classList.add("todoInputDueDate")
   let todoInputComplete = document.createElement("input")
   let todoDeleteBTN = document.createElement("button")
 
@@ -111,10 +115,10 @@ newTodoForm.addEventListener("submit", (e) => {
   todoInputComplete.setAttribute("type", "checkbox")
   todoDeleteBTN.classList.add("delete")
 
+  todoListItem.appendChild(todoInputComplete)
   todoListItem.appendChild(todoInputBox)
   todoListItem.appendChild(todoInputCategory)
   todoListItem.appendChild(todoInputDueDate)
-  todoListItem.appendChild(todoInputComplete)
   todoListItem.appendChild(todoDeleteBTN)
   displayTodos.appendChild(todoListItem)
 
@@ -142,8 +146,27 @@ newTodoForm.addEventListener("submit", (e) => {
     console.log(todos)
    }
   })
- }
 
+  // Changes the todo object to true --------------------------------------------------
+  todoInputComplete.addEventListener("click", () => {
+   todo.todoComplete = true
+    ? todo.todoComplete !== true
+    : todo.todoComplete == true
+   console.log(todos)
+
+   if (todo.todoComplete === true) {
+    todoListItem.classList.add("complete")
+    todoInputBox.classList.add("complete")
+    todoInputCategory.classList.add("complete")
+    todoInputDueDate.classList.add("complete")
+   } else {
+    todoListItem.classList.remove("complete")
+    todoInputBox.classList.remove("complete")
+    todoInputCategory.classList.remove("complete")
+    todoInputDueDate.classList.remove("complete")
+   }
+  })
+ }
  createNewTodo()
  console.log(todos)
 })
