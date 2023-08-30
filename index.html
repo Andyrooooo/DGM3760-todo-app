@@ -16,13 +16,6 @@
    <label for="category">Category</label>
    <select id="todoSelectCategory">
     <option value=""></option>
-    <!-- <option value="Fitness">Fitness</option>
-    <option value="Daily Goal">Daily Goal</option>
-    <option value="Home Improvement">Home Improvement</option>
-    <option value="chores">Chores</option>
-    <option value="work">Work</option>
-    <option value="school">School</option>
-    <option value="finances">Finances</option> -->
    </select>
 
    <label>Due Date</label>
@@ -31,6 +24,9 @@
    <input type="submit" class="addBTN" value="Add Todo"></input>
   </form>
 
+
+
+  <!-- form to add new categories -->
   <form id="newCategoryForm">
    <label>Add a new category</label>
    <input type="text" class="newCategoryInput" />
@@ -38,6 +34,18 @@
    <input type="submit" class="addCategory" value="Add Category"></input>
   </form>
 
+
+   <!-- Deletes Categories -->
+  <div id="deleteCategorySection">
+    <select class="categoryList"></select>
+    <button class="deleteCategory">Delete Category</button>
+  </div>
+
+
+
+
+
+  <!-- displays the todos -->
   <ul class="displayTodos"></ul>
  </body>
 

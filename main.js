@@ -22,20 +22,61 @@ todoSelectCategory.appendChild(homeworkOption)
 let newCategoryForm = document.querySelector("#newCategoryForm")
 let newCategoryInput = document.querySelector(".newCategoryInput")
 
+let deleteCategorySection = document.querySelector("#deleteCategorySection")
+let categoryList = document.querySelector(".categoryList")
+const deleteCategory = document.querySelector(".deleteCategory")
+
+// Updates the categoryList----------------------------------------------------------------
+function updateCategoryList() {
+ categoryList.innerHTML = ""
+
+ todoSelectCategory.childNodes.forEach((option) => {
+  if (option.tagName === "OPTION") {
+   let newOption = document.createElement("option")
+   newOption.textContent = option.textContent
+   categoryList.appendChild(newOption)
+  }
+ })
+}
+updateCategoryList()
+
 // ADD NEW CATEGORIES FUNCTION--------------------------------------------------------
 newCategoryForm.addEventListener("submit", (e) => {
  e.preventDefault()
 
- let createNewCategory = () => {
-  let newCategoryName = newCategoryInput.value
-  let newCategoryOption = document.createElement("option")
-  newCategoryOption.innerText = newCategoryName
-  todoSelectCategory.appendChild(newCategoryOption)
+ if (newCategoryInput.value === "") {
+  alert("Please Enter a valid Name")
+ } else {
+  let createNewCategory = () => {
+   let newCategoryName = newCategoryInput.value
+   let newCategoryOption = document.createElement("option")
+   newCategoryOption.innerText = newCategoryName
+   todoSelectCategory.appendChild(newCategoryOption)
+
+   updateCategoryList()
+
+   newCategoryInput.value = ""
+  }
+  createNewCategory()
  }
- createNewCategory()
 })
 
-// EVENT LISTENER TO ADD NEW TODO TO THE ARRAY-------------------------------------------
+// DELETES CATEGORY -----------------------------------------------------------------------
+deleteCategory.addEventListener("click", () => {
+ let selectedOptionIndex = categoryList.selectedIndex
+
+ if (selectedOptionIndex === 0) {
+  alert("Please Select a Category")
+ } else if (selectedOptionIndex !== -1) {
+  categoryList.removeChild(categoryList.options[selectedOptionIndex])
+  todoSelectCategory.removeChild(
+   todoSelectCategory.options[selectedOptionIndex]
+  )
+  updateCategoryList()
+ }
+})
+
+// EVENT LISTENER function TO ADD NEW TODO TO THE ARRAY-------------------------------------
 newTodoForm.addEventListener("submit", (e) => {
  e.preventDefault()
 
@@ -56,21 +97,25 @@ newTodoForm.addEventListener("submit", (e) => {
   let todoInputCategory = document.createElement("input")
   let todoInputDueDate = document.createElement("input")
   let todoInputComplete = document.createElement("input")
+  let todoDeleteBTN = document.createElement("button")
 
   todoInputBox.value = newTodoName
   todoInputCategory.value = newTodoCategory
   todoInputDueDate.value = newTodoDueDate
   todoInputComplete.value = newTodoComplete
+  todoDeleteBTN.innerText = "Delete"
 
   todoInputBox.setAttribute("readonly", "true")
   todoInputCategory.setAttribute("readonly", "true")
   todoInputDueDate.setAttribute("readonly", "true")
   todoInputComplete.setAttribute("type", "checkbox")
+  todoDeleteBTN.classList.add("delete")
 
   todoListItem.appendChild(todoInputBox)
   todoListItem.appendChild(todoInputCategory)
   todoListItem.appendChild(todoInputDueDate)
   todoListItem.appendChild(todoInputComplete)
+  todoListItem.appendChild(todoDeleteBTN)
   displayTodos.appendChild(todoListItem)
 
   let todo = {
@@ -79,6 +124,7 @@ newTodoForm.addEventListener("submit", (e) => {
    todoCategory: newTodoCategory,
    todoDueDate: newTodoDueDate,
    todoID: newTodoID,
+   /*    todoDeleteBTN: todoDeleteBTN, */
   }
 
   todos = [...todos, todo]
@@ -86,7 +132,18 @@ newTodoForm.addEventListener("submit", (e) => {
   todoInputName.value = ""
   todoSelectCategory.value = ""
   inputDueDate.value = ""
+
+  // DELETES A TODO ------------------------------------------------------------------
+  todoDeleteBTN.addEventListener("click", () => {
+   let todoDeleteIndex = todos.findIndex((todo) => todo.todoID === newTodoID)
+   if (todoDeleteIndex !== -1) {
+    todos.splice(todoDeleteIndex, 1)
+    displayTodos.removeChild(todoListItem)
+    console.log(todos)
+   }
+  })
  }
+
  createNewTodo()
  console.log(todos)
 })
