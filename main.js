@@ -28,7 +28,7 @@ const deleteCategory = document.querySelector(".deleteCategory")
 
 // Updates the categoryList----------------------------------------------------------------
 function updateCategoryList() {
- categoryList.innerHTML = ""
+ categoryList.innerText = ""
 
  todoSelectCategory.childNodes.forEach((option) => {
   if (option.tagName === "OPTION") {
@@ -76,7 +76,7 @@ deleteCategory.addEventListener("click", () => {
  }
 })
 
-// EVENT LISTENER function TO ADD NEW TODO TO THE ARRAY-------------------------------------
+// EVENT LISTENER TO ADD NEW TODO TO THE ARRAY-------------------------------------
 newTodoForm.addEventListener("submit", (e) => {
  e.preventDefault()
 
@@ -101,13 +101,15 @@ newTodoForm.addEventListener("submit", (e) => {
   let todoInputDueDate = document.createElement("input")
   todoInputDueDate.classList.add("todoInputDueDate")
   let todoInputComplete = document.createElement("input")
+  let todoEditNameBTN = document.createElement("button")
   let todoDeleteBTN = document.createElement("button")
 
   todoInputBox.value = newTodoName
   todoInputCategory.value = newTodoCategory
   todoInputDueDate.value = newTodoDueDate
   todoInputComplete.value = newTodoComplete
-  todoDeleteBTN.innerText = "Delete"
+  todoEditNameBTN.innerText = "Edit Name"
+  todoDeleteBTN.innerText = "Delete Todo"
 
   todoInputBox.setAttribute("readonly", "true")
   todoInputCategory.setAttribute("readonly", "true")
@@ -119,6 +121,7 @@ newTodoForm.addEventListener("submit", (e) => {
   todoListItem.appendChild(todoInputBox)
   todoListItem.appendChild(todoInputCategory)
   todoListItem.appendChild(todoInputDueDate)
+  todoListItem.appendChild(todoEditNameBTN)
   todoListItem.appendChild(todoDeleteBTN)
   displayTodos.appendChild(todoListItem)
 
@@ -128,26 +131,45 @@ newTodoForm.addEventListener("submit", (e) => {
    todoCategory: newTodoCategory,
    todoDueDate: newTodoDueDate,
    todoID: newTodoID,
-   /*    todoDeleteBTN: todoDeleteBTN, */
   }
 
   todos = [...todos, todo]
-  /* todos.push(todo) */
+  /*  todos.push(todo) */
   todoInputName.value = ""
   todoSelectCategory.value = ""
   inputDueDate.value = ""
 
   // DELETES A TODO ------------------------------------------------------------------
   todoDeleteBTN.addEventListener("click", () => {
-   let todoDeleteIndex = todos.findIndex((todo) => todo.todoID === newTodoID)
+   let todoDeleteIndex = Array.from(displayTodos.children).indexOf(todoListItem)
+
    if (todoDeleteIndex !== -1) {
     todos.splice(todoDeleteIndex, 1)
     displayTodos.removeChild(todoListItem)
     console.log(todos)
    }
   })
+  /* todoDeleteBTN.addEventListener("click", () => {
+   displayTodos.removeChild(todoListItem)
+   console.log(todos)
+  }) 
+  // its not updating the array, they are still in there
+  */
 
-  // Changes the todo object to true --------------------------------------------------
+  // EDITS A TODO NAME ------------------------------------------------------------------
+  todoEditNameBTN.addEventListener("click", () => {
+   if (todoEditNameBTN.innerText == "Edit Name") {
+    todoInputBox.removeAttribute("readonly")
+    todoInputBox.focus()
+    todoEditNameBTN.innerText = "Save Name"
+   } else {
+    todo.todoName = todoInputBox.value
+    todoInputBox.setAttribute("readonly", "true")
+    todoEditNameBTN.innerText = "Edit Name"
+   }
+  })
+
+  // Changes the todo complete property to true -------------------------------------------
   todoInputComplete.addEventListener("click", () => {
    todo.todoComplete = true
     ? todo.todoComplete !== true
@@ -170,6 +192,7 @@ newTodoForm.addEventListener("submit", (e) => {
  createNewTodo()
  console.log(todos)
 })
+console.log(todos)
 
 /* let todos = [
  {
