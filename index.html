@@ -7,42 +7,66 @@
   <title>Document</title>
  </head>
  <body>
-  <h1>My todo App</h1>
+    <header>
+        <h1>My todo App</h1>
+    </header>
 
-  <form id="newTodoForm">
-   <label>Description</label>
-   <input class="todoInputName" type="text" />
-
-   <label for="category">Category</label>
-   <select id="todoSelectCategory">
-    <option value=""></option>
-   </select>
-
-   <label>Due Date</label>
-   <input class="inputDueDate" type="date" />
-
-   <input type="submit" class="addBTN" value="Add Todo"></input>
-  </form>
-
-
-  <!-- form to add new categories -->
-  <form id="newCategoryForm">
-   <label>Add a new category</label>
-   <input type="text" class="newCategoryInput" />
-
-   <input type="submit" class="addCategory" value="Add Category"></input>
-  </form>
-
-
-   <!-- Deletes Categories -->
-  <div id="deleteCategorySection">
-    <select class="categoryList"></select>
-    <button class="deleteCategory">Delete Category</button>
-  </div>
-
-
-  <!-- displays the todos -->
-  <ul class="displayTodos"></ul>
+    <main>
+        <div class="newFormSection">
+            <form id="newTodoForm">
+                <h2>Add a new todo</h2>
+                <div class="formDescriptionSection">
+                    <label>Description</label>
+                    <input class="todoInputName" type="text" />
+                </div>
+    
+                <div class="formCategoryDate">
+                    <div class="formCategorySection">
+                        <label for="category">Category</label>
+                        <select id="todoSelectCategory">
+                        <option value=""></option>
+                        </select>
+                    </div>
+                    
+                    <div class="formDueDateSection">
+                        <label>Due Date</label>
+                        <input class="inputDueDate" type="date" />
+                    </div>
+                </div>
+             
+                <input type="submit" class="addBTN" value="Add Todo"></input>
+            </form>
+        </div>
+         
+        <div class="addDeleteCategory">
+            <!-- form to add new categories -->
+            <form id="newCategoryForm">
+                <div class="inputsSection">
+                    <h2 class="addDeleteTitle">Add or delete a category</h2>
+                    <label>Add a new category</label>
+                    <input type="text" class="newCategoryInput" />
+                </div>
+                
+                <div class="submitCategoryBTN">
+                    <input type="submit" class="addCategory" value="Add Category"></input>
+                </div>
+            </form>
+            
+            <!-- Deletes Categories -->
+            <div id="deleteCategorySection">
+                <label>Delete a category</label>
+                <select class="categoryList"></select>
+                <button class="deleteCategory">Delete Category</button>
+            </div>
+        </div>
+        
+        
+        
+        <!-- displays the todos -->
+        <h2 class="displayTodosTitle">Your Todos</h2>
+        <ul class="displayTodos"></ul>
+    </main>
+  
  </body>
 
  <script src="main.js"></script>

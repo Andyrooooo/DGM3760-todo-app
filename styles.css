@@ -1,5 +1,304 @@
+body {
+ background-color: #f3f3f3;
+}
+
+header h1 {
+ text-align: center;
+ color: #002435;
+}
+
+main {
+ width: 90%;
+ padding: 10px;
+ margin: auto;
+ background: #002435;
+ color: white;
+ border-radius: 5px;
+ box-shadow: 1px 1px 5px #002435;
+ display: flex;
+ justify-content: space-between;
+ flex-wrap: wrap;
+}
+
+main input {
+ box-sizing: border-box;
+ padding-top: 15px;
+ padding-bottom: 15px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ outline: none;
+ background: #6cd0ff;
+ border: none;
+}
+
+div.newFormSection {
+ flex-basis: 49%;
+}
+
+main form#newTodoForm {
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+}
+
+div.formDescriptionSection,
+div.formCategoryDate,
+input.addBTN {
+ flex-basis: 100%;
+}
+
+input.todoInputName {
+ width: 100%;
+ padding-left: 10px;
+ border-radius: 10px;
+}
+
+input.todoInputName:hover {
+ box-shadow: 2px 1px 8px #57a6cb;
+}
+
+div.formCategoryDate {
+ display: flex;
+ justify-content: space-between;
+}
+
+div.formCategorySection {
+ flex-basis: 74%;
+}
+
+div.formDueDateSection {
+ flex-basis: 24%;
+}
+
+select#todoSelectCategory {
+ width: 100%;
+ padding: 17px 40px 15px 5px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ border-radius: 10px;
+ background: #6cd0ff;
+}
+
+select#todoSelectCategory:hover {
+ box-shadow: 2px 1px 8px #57a6cb;
+}
+
+input.inputDueDate {
+ width: 100%;
+ padding-left: 10px;
+ padding-right: 10px;
+ border-radius: 10px;
+}
+
+input.inputDueDate:hover {
+ box-shadow: 2px 1px 8px #57a6cb;
+}
+
+/* input[type="date"]::-ms-clear {
+ color: white;
+} */
+
+input.addBTN {
+ padding: 15px 80px;
+ margin: 10px 50%;
+ border: none;
+ font-weight: 700;
+ background: #b7e8ff;
+}
+
+input.addBTN:hover {
+ box-shadow: 2px 1px 8px #57a6cb;
+}
+
+div.addDeleteCategory {
+ flex-basis: 49%;
+ background: #3b7089;
+ border-radius: 10px;
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ padding-left: 10px;
+ padding-right: 10px;
+ box-shadow: 2px 1px 8px #315e72;
+}
+
+form#newCategoryForm {
+ flex-basis: 100%;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+div.inputsSection {
+ flex-basis: 100%;
+}
+
+div#deleteCategorySection {
+ flex-basis: 100%;
+ border-top: 1px solid #4a8ba9;
+ padding-top: 1rem;
+}
+
+.addDeleteTitle {
+ text-align: center;
+}
+
+.newCategoryInput {
+ width: 100%;
+ border-radius: 10px;
+ padding-left: 10px;
+ background: #a5d3e9;
+}
+
+.newCategoryInput:hover {
+ box-shadow: 2px 1px 8px #002435;
+}
+
+div.submitCategoryBTN {
+ flex-basis: 100%;
+}
+
+input.addCategory {
+ width: 25%;
+ margin: 15px 37.5%;
+ font-weight: 700;
+ background: #002435;
+ box-sizing: border-box;
+ align-self: center;
+ color: white;
+}
+
+input.addCategory:hover {
+ box-shadow: 2px 1px 8px #000d12;
+}
+
+.categoryList {
+ width: 100%;
+ border-radius: 10px;
+ padding-left: 10px;
+ background: #a5d3e9;
+ padding-top: 15px;
+ padding-bottom: 15px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ outline: none;
+ border: none;
+}
+
+.deleteCategory {
+ padding: 15px 0;
+ width: 25%;
+ margin: 15px 37.5%;
+ font-weight: 700;
+ background: #002435;
+ color: white;
+ border: none;
+}
+
+.categoryList:hover {
+ box-shadow: 2px 1px 8px #002435;
+}
+
+.deleteCategory:hover {
+ box-shadow: 2px 1px 8px #000d12;
+}
+
+h2.displayTodosTitle {
+ border-top: 1px solid #003852;
+ padding-top: 1rem;
+ width: 100%;
+ text-align: center;
+}
+
+ul.displayTodos {
+ flex-basis: 100%;
+ list-style-type: none;
+ padding-left: 0;
+}
+
+li.todoListItem {
+ display: flex;
+ justify-content: space-between;
+}
+
+input.checkboxComplete {
+ height: 45px;
+ width: 45px;
+ flex-basis: 4%;
+ margin-left: 0;
+}
+
+div.todoInfoContainer {
+ flex-basis: 73%;
+}
+
+.todoInputCategory {
+ width: 33.33%;
+ padding-left: 10px;
+ font-weight: 700;
+ background: #c8eeff;
+ border-right: 1px solid #002435;
+}
+
+.todoInputBox {
+ width: 33.33%;
+ padding-left: 10px;
+ font-weight: 700;
+ border-top-left-radius: 10px;
+ border-bottom-left-radius: 10px;
+ background: #c8eeff;
+ border-right: 1px solid #002435;
+}
+
+.todoInputBox:focus {
+ box-shadow: 2px 1px 8px #d3f1ff;
+}
+
+.todoInputDueDate {
+ width: 33.33%;
+ padding-left: 10px;
+ font-weight: 700;
+ border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px;
+ background: #c8eeff;
+}
+
+div.todoDeleteButtonContainer {
+ flex-basis: 9%;
+}
+.todoDeleteBTN {
+ background: red;
+ width: 100%;
+ padding-top: 15px;
+ padding-bottom: 15px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ font-weight: 700;
+ border: none;
+}
+
+.todoDeleteBTN:hover {
+ box-shadow: 2px 1px 8px rgb(134, 0, 0);
+}
+
+div.todoEditNameButtonContainer {
+ flex-basis: 9%;
+}
+.todoEditNameBTN {
+ background: yellow;
+ width: 100%;
+ padding-top: 15px;
+ padding-bottom: 15px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ font-weight: 700;
+ border: none;
+}
+.todoEditNameBTN:hover {
+ box-shadow: 2px 1px 8px rgb(168, 168, 0);
+}
+
 .todoListItem.complete {
- background-color: green;
+ background-color: white;
 }
 
 .todoInputBox.complete,

@@ -101,8 +101,17 @@ newTodoForm.addEventListener("submit", (e) => {
   let todoInputDueDate = document.createElement("input")
   todoInputDueDate.classList.add("todoInputDueDate")
   let todoInputComplete = document.createElement("input")
+  todoInputComplete.classList.add("checkboxComplete")
   let todoEditNameBTN = document.createElement("button")
+  todoEditNameBTN.classList.add("todoEditNameBTN")
   let todoDeleteBTN = document.createElement("button")
+  todoDeleteBTN.classList.add("todoDeleteBTN")
+  let todoInfoContainer = document.createElement("div")
+  todoInfoContainer.classList.add("todoInfoContainer")
+  let todoEditNameButtonContainer = document.createElement("div")
+  todoEditNameButtonContainer.classList.add("todoEditNameButtonContainer")
+  let todoDeleteButtonContainer = document.createElement("div")
+  todoDeleteButtonContainer.classList.add("todoDeleteButtonContainer")
 
   todoInputBox.value = newTodoName
   todoInputCategory.value = newTodoCategory
@@ -118,11 +127,14 @@ newTodoForm.addEventListener("submit", (e) => {
   todoDeleteBTN.classList.add("delete")
 
   todoListItem.appendChild(todoInputComplete)
-  todoListItem.appendChild(todoInputBox)
-  todoListItem.appendChild(todoInputCategory)
-  todoListItem.appendChild(todoInputDueDate)
-  todoListItem.appendChild(todoEditNameBTN)
-  todoListItem.appendChild(todoDeleteBTN)
+  todoInfoContainer.appendChild(todoInputBox)
+  todoInfoContainer.appendChild(todoInputCategory)
+  todoInfoContainer.appendChild(todoInputDueDate)
+  todoListItem.appendChild(todoInfoContainer)
+  todoEditNameButtonContainer.appendChild(todoEditNameBTN)
+  todoListItem.appendChild(todoEditNameButtonContainer)
+  todoDeleteButtonContainer.appendChild(todoDeleteBTN)
+  todoListItem.appendChild(todoDeleteButtonContainer)
   displayTodos.appendChild(todoListItem)
 
   let todo = {
